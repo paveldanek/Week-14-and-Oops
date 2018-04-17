@@ -1,0 +1,7 @@
+#!ipxe
+
+echo
+echo
+echo H E L L O  ! ! !
+sleep 10
+

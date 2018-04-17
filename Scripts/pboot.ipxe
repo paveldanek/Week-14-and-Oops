@@ -1,0 +1,8 @@
+#!ipxe
+
+set TARGET booter
+
+echo
+echo Attempting to execute ${TARGET}...
+chain ${TARGET} || echo -n Execution unsuccessful.
+
