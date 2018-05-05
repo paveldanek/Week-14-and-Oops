@@ -5,13 +5,13 @@
 Greetings to the whole team, I **finally** made some progress and breakthrough on the way to a **customized bootable iPXE USB drive**.
 I studied [iPXE website](https://ipxe.org/start), [iPXE source code](https://github.com/ipxe/ipxe) and also [NetBoot.xyz website](https://netboot.xyz) and [NetBoot.xyz source code](https://github.com/antonym/netboot.xyz) to better understand, how their scripts work. Scripts from NetBoot.xyz served me as examples and templates for my own. My Linux class teacher, [Mr. Matthew Harmon](https://github.com/mjhedu) was a big help and advisor to me. I also seeked advice from NetBoot.xyz's programmer, Antony Messerli and iPXE's no.1, Michael Brown.
 
-1. First guideline came from iPXE website, saying: "`clone the iPXE repo; cd ipxe/src; make`". While that was a good start, it would only build a generic iPXE. An important part are packages one needs to install before building iPXE. They're listed [here](https://ipxe.org/download). With liblzma I had a problem; couldn't find it, but I found a solution in the end: '`sudo apt-get install -y liblzma-dev`'.
+1. First guideline came from iPXE website, saying: "`clone the iPXE repo; cd ipxe/src; make`". While that was a good start, it would only build a generic iPXE. I needed to embed my own script. We'll get to that later. At this point, an important part are packages one needs to install before building iPXE. They're listed [here](https://ipxe.org/download). With liblzma I had a problem; couldn't find it, but I found a solution in the end: '`sudo apt-get install -y liblzma-dev`'.
 2. In order to use **https** and port 443, which our server communicates through, I had to "turn on" https, which is by default off in iPXE:
 
 	In ipxe/src/config dir:
 	- `nano general.h`
 	- on line 57, change `#undef DOWNLOAD_PROTO_HTTPS` to `#define DOWNLOAD_PROTO_HTTPS`, save and exit
-3. Next obstacle was an error with missing boot image 'isolines.bin'. The solution was found for me as follows:
+3. Next obstacle was an error with missing boot image 'isolinux.bin'. The solution was found for me as follows:
 
 	In your home directory:
 	- `wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.zip`
